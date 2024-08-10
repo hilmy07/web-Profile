@@ -126,13 +126,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var map = L.map('map').setView([-7.2575, 112.7521], 15); // Ganti dengan koordinat yang sesuai
+            var map = L.map('map').setView([1685221346, 9623746921], 15); // Ganti dengan koordinat yang sesuai
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            L.marker([-7.2575, 112.7521]).addTo(map) // Ganti dengan koordinat yang sesuai
+            L.marker([1685221346, 9623746921]).addTo(map) // Ganti dengan koordinat yang sesuai
                 .bindPopup('Jalan Krukah Selatan 7-A No. 15/A Surabaya')
                 .openPopup();
         });
