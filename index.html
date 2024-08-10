@@ -120,7 +120,25 @@
                 <p class="animate-contact" >+62 8969 5935 333</p>
             </div>
         </div>
-    </div><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+
+    <!-- Div untuk menampilkan peta -->
+    <div id="map" style="height: 400px; width: 100%;"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([-7.2575, 112.7521], 15); // Ganti dengan koordinat yang sesuai
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([-7.2575, 112.7521]).addTo(map) // Ganti dengan koordinat yang sesuai
+                .bindPopup('Jalan Krukah Selatan 7-A No. 15/A Surabaya')
+                .openPopup();
+        });
+    </script>
 
     <!--Footer-->
     <footer>
