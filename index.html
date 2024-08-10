@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384-xodZBntMZxXOyE1rhT4M1gqL4GbAJ5j57m5x2Nx9TDI4GdiG2P2S9A65nwh3N9oK" crossorigin=""/>
 </head>
 <body>
 
@@ -121,34 +120,12 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br>
 
-    <!-- Div untuk menampilkan peta -->
-    <div id="map" style="height: 400px; width: 100%;"></div>
-
-    <script>
-        const nodeIds = ["1685221346", "9623746921", "9623632733", "1685221659"];
-        const coordinates = [];
-
-        Promise.all(nodeIds.map(id => 
-            fetch(`https://api.openstreetmap.org/api/0.6/node/${id}.json`)
-                .then(response => response.json())
-                .then(data => {
-                    const node = data.elements[0];
-                    coordinates.push({ lat: node.lat, lon: node.lon });
-                })
-        )).then(() => {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = 'Coordinates for Jalan Krukah Selatan VII A:<br>' +
-                coordinates.map(coord => `Latitude: ${coord.lat}, Longitude: ${coord.lon}`).join('<br>');
-        }).catch(error => console.error('Error:', error));
-    </script>
-
     <!--Footer-->
     <footer>
         <div class="container">
             <small>Copyright &copy; 2021 - Muhammad Hilmy.</small>
         </div>
     </footer>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-GIEZZlABiB2l2MUnCMp2+j0oJ1v+lIG9/omIh7YOc6A3ERMD/IUCh6UrCw5iwF4i" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
     <script src="app.js"></script>
