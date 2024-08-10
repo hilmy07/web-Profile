@@ -125,22 +125,21 @@
     <div id="map" style="height: 400px; width: 100%;"></div>
 
     <script>
-        const map = L.map('map').setView([-7.2575, 112.7521], 15);
+        const nodeIds = ["1685221346", "9623746921", "9623632733", "1685221659"];
+        const coordinates = [];
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        const coordinates = [
-            [-7.287, 112.735], // Replace with actual coordinates
-            [-7.288, 112.736],
-            [-7.289, 112.737],
-            [-7.290, 112.738]
-        ];
-
-        const polyline = L.polyline(coordinates, {color: 'blue'}).addTo(map);
-
-        map.fitBounds(polyline.getBounds());
+        Promise.all(nodeIds.map(id => 
+            fetch(`https://api.openstreetmap.org/api/0.6/node/${id}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    const node = data.elements[0];
+                    coordinates.push({ lat: node.lat, lon: node.lon });
+                })
+        )).then(() => {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Coordinates for Jalan Krukah Selatan VII A:<br>' +
+                coordinates.map(coord => `Latitude: ${coord.lat}, Longitude: ${coord.lon}`).join('<br>');
+        }).catch(error => console.error('Error:', error));
     </script>
 
     <!--Footer-->
