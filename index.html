@@ -125,17 +125,22 @@
     <div id="map" style="height: 400px; width: 100%;"></div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var map = L.map('map').setView([1685221346, 9623746921], 15); // Ganti dengan koordinat yang sesuai
+        const map = L.map('map').setView([-7.2575, 112.7521], 15);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            L.marker([1685221346, 9623746921]).addTo(map) // Ganti dengan koordinat yang sesuai
-                .bindPopup('Jalan Krukah Selatan 7-A No. 15/A Surabaya')
-                .openPopup();
-        });
+        const coordinates = [
+            [-7.287, 112.735], // Replace with actual coordinates
+            [-7.288, 112.736],
+            [-7.289, 112.737],
+            [-7.290, 112.738]
+        ];
+
+        const polyline = L.polyline(coordinates, {color: 'blue'}).addTo(map);
+
+        map.fitBounds(polyline.getBounds());
     </script>
 
     <!--Footer-->
